@@ -1,0 +1,21 @@
+import React from 'react'
+
+function Intro() {
+    return (
+        <div className='h-[80vh] bg-primary flex flex-col items-start justify-center gap-8 py-10'>
+            <h1 className='text-white'>Hi, I am</h1>
+            <h1 className='text-secondary text-7xl font-semibold'>Shailesh Pandey</h1>
+            <h1 className='text-white text-6xl font-semibold'>
+                Build things For The Web.
+            </h1>
+            <p className='text-tertiary w-2/3'>In publishing and graphic design,
+                Lorem ipsum is a placeholder text commonly used to demonstrate the visual
+                form of a document or a typeface without relying on meaningful content.
+            </p>
+            <button className='border-2 border-tertiary text-tertiary px-10 py-3 rounded'>Get Start</button>
+
+        </div>
+    )
+}
+
+export default Intro
