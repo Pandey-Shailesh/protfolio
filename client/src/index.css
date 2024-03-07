@@ -7,3 +7,73 @@
 *{
     font-family: "Montserrat", sans-serif;
 }
+/* width */
+::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+
+    background-color:#0A192F ;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background:  #11233c95 ;
+    border-radius: 10px;
+  }
+
+i{
+  cursor: pointer;
+}
+i:hover{
+  color: white;
+}
+
+
+/* loader animation */
+.s{
+  animation: s 1s infinite;
+}
+@keyframes s {
+  0%{
+    opacity: 1;
+  }
+  50%{
+    opacity: 0.5;
+  }
+  100%{
+   opacity: 0.5;
+  }
+}
+
+.b{
+  animation: b 1s infinite;
+}
+@keyframes b {
+  0%{
+    opacity: 0.5;
+  }
+  50%{
+    opacity: 1;
+  }
+  100%{
+   opacity: 0.5;
+  }
+}
+
+.p{
+  animation: p 1s infinite;
+}
+@keyframes p {
+  0%{
+    opacity: 0.5;
+  }
+  50%{
+    opacity: 0.5;
+  }
+  100%{
+   opacity: 1;
+  }
+}
