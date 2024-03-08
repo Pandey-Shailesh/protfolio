@@ -7,6 +7,10 @@
 *{
     font-family: "Montserrat", sans-serif;
 }
+.header h1{
+  margin: 0 !important;
+  padding: 0 !important;
+}
 /* width */
 ::-webkit-scrollbar {
     width: 6px;
@@ -76,4 +80,22 @@ i:hover{
   100%{
    opacity: 1;
   }
+}
+
+
+/* input */
+input,textarea{
+  height: 40px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  width: 100%;
+  padding-left: 20px;
+}
+input:focus{
+  outline: none;
+  border: 2px solid rgb(56, 56, 56);
+}
+textarea{
+  height: 100px;
+  padding-top: 10px;
 }
