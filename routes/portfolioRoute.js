@@ -1,8 +1,8 @@
 const router = require("express").Router();
-const {Intro, About, Experience, Project, Course, Contact} =require("../models/portfolioModel");
+const { Intro, About, Experience, Project, Course, Contact } = require("../models/portfolioModel");
 
-
-router.get("/get-portfolio-data", async(req,res)=>{
+//get all portfolio data
+router.get("/get-portfolio-data", async (req, res) => {
     try {
         const intros = await Intro.find();
         const abouts = await About.find();
@@ -23,7 +23,29 @@ router.get("/get-portfolio-data", async(req,res)=>{
         res.status(500).send(error);
     }
 });
-module.exports =router;
+
+//update into
+router.post("/update-intro", async (req, res) => {
+    try {
+        const intro = await Intro.findOneAndUpdate(
+            { _id: req.body._id },
+            req.body,
+            { new: true }
+        );
+        res.status(200).send({
+            data: intro,
+            success: true,
+            message: "Intro updated Successfully",
+        });
+    } catch (error) {
+        res.status(500).send(error);
+    }
+});
+
+
+
+
+module.exports = router;
 
 
 
