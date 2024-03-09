@@ -105,7 +105,52 @@ router.post("/delete-experience", async (req, res) => {
     }
 });
 
+//add Projects
+router.post("/add-project", async (req, res) => {
+    try {
+        const project = new Project(req.body);
+        await project.save();
+        res.status(200).send({
+            data: project,
+            success: true,
+            message: "Project added successfully",
+        });
+    } catch (error) {
+        res.status(500).send(error);
+    }
+});
 
+//update project
+router.post("/update-project", async (req, res) => {
+    try {
+        const project = await Project.findOneAndUpdate(
+            {_id:req.body._id},
+            req.body,
+            {new:true},
+        );
+        res.status(200).send({
+            data: project,
+            success: true,
+            message: "Project Updated successfully",
+        });
+    } catch (error) {
+        res.status(500).send(error);
+    }
+});
+
+//delete experience
+router.post("/delete-project", async (req, res) => {
+    try {
+        const project = await Project.findOneAndDelete({_id:req.body._id});
+        res.status(200).send({
+            data: project,
+            success: true,
+            message: "Project Deleted successfully",
+        });
+    } catch (error) {
+        res.status(500).send(error);
+    }
+});
 
 
 module.exports = router;

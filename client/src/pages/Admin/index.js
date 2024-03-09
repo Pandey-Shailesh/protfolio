@@ -2,9 +2,10 @@ import React from 'react'
 import Header from "../../components/Header";
 import AdminIntro from "./AdminIntro";
 import AdminAbout from "./AdminAbout";
-import Experiences from "./Experiences";
+import AdminExperiences from "./AdminExperiences";
 import { useSelector } from "react-redux";
 import { Tabs } from 'antd';
+import AdminProjects from './AdminProjects';
 const { TabPane } = Tabs;
 function Admin() {
     const { portfolioData } = useSelector((state) => state.root);
@@ -20,7 +21,10 @@ function Admin() {
                         <AdminAbout />
                     </TabPane>
                     <TabPane tab="Experiences" key="3">
-                        <Experiences />
+                        <AdminExperiences />
+                    </TabPane>
+                    <TabPane tab="Projects" key="4">
+                        <AdminProjects />
                     </TabPane>
                 </Tabs>
             </div>}
