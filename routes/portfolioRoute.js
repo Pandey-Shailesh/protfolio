@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { Intro, About, Experience, Project, Course, Contact } = require("../models/portfolioModel");
-
+const User = require("../models/userModel");
 //get all portfolio data
 router.get("/get-portfolio-data", async (req, res) => {
     try {
@@ -77,9 +77,9 @@ router.post("/add-experience", async (req, res) => {
 router.post("/update-experience", async (req, res) => {
     try {
         const experience = await Experience.findOneAndUpdate(
-            {_id:req.body._id},
+            { _id: req.body._id },
             req.body,
-            {new:true},
+            { new: true },
         );
         res.status(200).send({
             data: experience,
@@ -94,7 +94,7 @@ router.post("/update-experience", async (req, res) => {
 //delete experience
 router.post("/delete-experience", async (req, res) => {
     try {
-        const experience = await Experience.findOneAndDelete({_id:req.body._id});
+        const experience = await Experience.findOneAndDelete({ _id: req.body._id });
         res.status(200).send({
             data: experience,
             success: true,
@@ -124,9 +124,9 @@ router.post("/add-project", async (req, res) => {
 router.post("/update-project", async (req, res) => {
     try {
         const project = await Project.findOneAndUpdate(
-            {_id:req.body._id},
+            { _id: req.body._id },
             req.body,
-            {new:true},
+            { new: true },
         );
         res.status(200).send({
             data: project,
@@ -141,7 +141,7 @@ router.post("/update-project", async (req, res) => {
 //delete project
 router.post("/delete-project", async (req, res) => {
     try {
-        const project = await Project.findOneAndDelete({_id:req.body._id});
+        const project = await Project.findOneAndDelete({ _id: req.body._id });
         res.status(200).send({
             data: project,
             success: true,
@@ -171,9 +171,9 @@ router.post("/add-course", async (req, res) => {
 router.post("/update-course", async (req, res) => {
     try {
         const course = await Course.findOneAndUpdate(
-            {_id:req.body._id},
+            { _id: req.body._id },
             req.body,
-            {new:true},
+            { new: true },
         );
         res.status(200).send({
             data: course,
@@ -188,7 +188,7 @@ router.post("/update-course", async (req, res) => {
 //delete course
 router.post("/delete-course", async (req, res) => {
     try {
-        const course = await Course.findOneAndDelete({_id:req.body._id});
+        const course = await Course.findOneAndDelete({ _id: req.body._id });
         res.status(200).send({
             data: course,
             success: true,
@@ -217,6 +217,32 @@ router.post("/update-contact", async (req, res) => {
         res.status(500).send(error);
     }
 });
+
+//user login
+router.post("/admin-login", async (req, res) => {
+    try {
+        const user = await User.findOne({ userName: req.body.userName, password: req.body.password });
+        user.password="";
+        if (user) {
+            res.status(200).send({
+                data: user,
+                success: true,
+                message: "Login successfully",
+            });
+        } else {
+            res.status(200).send({
+                data: user,
+                success: false,
+                message: "Invalid Username or Password",
+            });
+        }
+
+    } catch (error) {
+        res.status(500).send(error);
+    }
+});
+
+
 
 module.exports = router;
 
