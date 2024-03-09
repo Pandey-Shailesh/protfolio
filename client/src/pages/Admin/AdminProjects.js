@@ -73,7 +73,7 @@ function AdminProjects() {
                     }}
                 >Add Project</button>
             </div>
-            <div className='grid grid-cols-3 gap-5 mt-5'>
+            <div className='grid grid-cols-3 gap-5 mt-5 sm:grid-cols-1'>
                 {projects.map((project) => (
                     <div className='shadow boder p-5 border-gray-400 flex flex-col'>
                         <h1 className='text-primary text-xl font-bold'>{project.title}</h1>
@@ -102,7 +102,7 @@ function AdminProjects() {
 
             {(type === "add" || selectedItemForEdit) && (
                  <Modal visible={showAddEditModel}
-                 title={selectedItemForEdit ? "Edit Experience" : "Add Experience"}
+                 title={selectedItemForEdit ? "Edit Project" : "Add Project"}
                  footer={null}
                  onCancel={() => {
                      setShowAddEditModel(false);

@@ -138,7 +138,7 @@ router.post("/update-project", async (req, res) => {
     }
 });
 
-//delete experience
+//delete project
 router.post("/delete-project", async (req, res) => {
     try {
         const project = await Project.findOneAndDelete({_id:req.body._id});
@@ -152,6 +152,71 @@ router.post("/delete-project", async (req, res) => {
     }
 });
 
+//add Courses
+router.post("/add-course", async (req, res) => {
+    try {
+        const course = new Course(req.body);
+        await course.save();
+        res.status(200).send({
+            data: course,
+            success: true,
+            message: "Course added successfully",
+        });
+    } catch (error) {
+        res.status(500).send(error);
+    }
+});
+
+//update course
+router.post("/update-course", async (req, res) => {
+    try {
+        const course = await Course.findOneAndUpdate(
+            {_id:req.body._id},
+            req.body,
+            {new:true},
+        );
+        res.status(200).send({
+            data: course,
+            success: true,
+            message: "Course Updated successfully",
+        });
+    } catch (error) {
+        res.status(500).send(error);
+    }
+});
+
+//delete course
+router.post("/delete-course", async (req, res) => {
+    try {
+        const course = await Course.findOneAndDelete({_id:req.body._id});
+        res.status(200).send({
+            data: course,
+            success: true,
+            message: "Course Deleted successfully",
+        });
+    } catch (error) {
+        res.status(500).send(error);
+    }
+});
+
+
+//update contact
+router.post("/update-contact", async (req, res) => {
+    try {
+        const contact = await Contact.findOneAndUpdate(
+            { _id: req.body._id },
+            req.body,
+            { new: true }
+        );
+        res.status(200).send({
+            data: contact,
+            success: true,
+            message: "Contact updated Successfully",
+        });
+    } catch (error) {
+        res.status(500).send(error);
+    }
+});
 
 module.exports = router;
 

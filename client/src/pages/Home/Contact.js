@@ -4,13 +4,15 @@ import { useSelector } from "react-redux";
 function Contact() {
     const { portfolioData } = useSelector((state) => state.root);
     const {contacts } = portfolioData;
+
     return (
         <div>
             <SectionTitle title="Say Hello" />
             <div className='flex sm:flex-col items-center justify-between'>
-               <div className='flex flex-col gap-1'>
+               <div className='flex flex-col '>
                <p className='text-tertiary '>{"{"}</p>
-                {Object.keys(contacts).map((key) => (
+                {Object.keys(contacts).map(
+                    (key) => key!=="_id" && (
                     <p className='ml-5 '>
                         <span className='text-tertiary'>{key}: </span><spn className='text-white'>{contacts[key]}</spn>
                     </p>
